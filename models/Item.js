@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-// create our Item model
+// create Item model
 class Item extends Model {}
 
 // create fields/columns for Item model
@@ -19,18 +19,22 @@ Item.init(
     },
 
     artist: {
-
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
-    
-   item_url: {
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    item_url: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isURL: true,
       },
     },
-
   },
   {
     sequelize,
