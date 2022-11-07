@@ -4,9 +4,9 @@ const Comment = require("./Comment");
 
 //associations listed here
 
-User.hasMany(Item, {
-    foreignKey: "user_id",
-  });
+// User.hasMany(Item, {
+//     foreignKey: "user_id",
+//   });
   
 //   Item.belongsTo(User, {
 //     foreignKey: "user_id",
