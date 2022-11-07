@@ -1,2 +1,4 @@
 node_modules/
 /db/connection.js
+.env
+package-lock.json
