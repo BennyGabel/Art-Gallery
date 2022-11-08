@@ -5,7 +5,7 @@ const { Art, Item, User, Comment } = require('../../models');
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
-  Item.findAll({
+  Art.findAll({
 
     // attributes: [
     //   'id',
@@ -48,7 +48,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Item.findOne({
+  Art.findOne({
     where: {
       id: req.params.id
     },
@@ -89,7 +89,7 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-  Item.update(
+  Art.update(
     {
       title: req.body.title
     },
@@ -113,7 +113,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Item.destroy({
+  Art.destroy({
     where: {
       id: req.params.id
     }
