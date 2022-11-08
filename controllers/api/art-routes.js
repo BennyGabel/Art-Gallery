@@ -4,7 +4,7 @@ const { Art, Item, User, Comment } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
-  console.log('======================');
+  console.log('=========  Art  =============');
   Art.findAll({
 
     // attributes: [
