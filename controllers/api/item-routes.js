@@ -6,28 +6,37 @@ const { Item, User, Comment } = require('../../models');
 router.get('/', (req, res) => {
   console.log('======================');
   Item.findAll({
+
+    // attributes: [
+    //   'id',
+    //   'item_url',
+    //   'title',
+    //   'created_at',
+    //   // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
+    // ],
     attributes: [
       'id',
-      'item_url',
+      'linkResource',
       'title',
-      'created_at',
+      'endBy',
       // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
     ],
-    order: [['created_at', 'DESC']],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    // order: [['created_at', 'DESC']],
+    order: [['endBy', 'DESC']]  // ,
+    // include: [
+    //   {
+    //     model: Comment,
+    //     attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
+    //     include: {
+    //       model: User,
+    //       attributes: ['username']
+    //     }
+    //   },
+    //   {
+    //     model: User,
+    //     attributes: ['username']
+    //   }
+    // ]
   })
     .then(dbItemData => res.json(dbItemData))
     .catch(err => {

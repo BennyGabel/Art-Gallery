@@ -17,17 +17,4 @@ CREATE TABLE art (
   city        CHAR(15),
   linkResource CHAR(60));
 
--- WISH LIST 
--- CREATE TABLE USER (
--- USER CHAR(20);
--- PWRD CHAR(50))
-
--- CREATE TABLE COMMENTS (
---   USER CCHAR(20),
---   ITEM_ID INTEGER
---   COMMENT TEXT
--- )
-
-
-
 -- id	Is Public Domain	Object ID	Gallery Number	Department	Object Name	Title	Culture	Artist Display Name	Artist Nationality	Artist End Date	Medium	City	Link Resource

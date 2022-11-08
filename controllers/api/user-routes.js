@@ -3,6 +3,7 @@ const { User, Item, Comment } = require("../../models");
 
 // get all users
 router.get("/", (req, res) => {
+  console.log('Look for ALL')
   User.findAll({
     attributes: { exclude: ["password"] },
   })
@@ -15,6 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  console.log('Look for 1')
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {

@@ -13,24 +13,70 @@ Item.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    
+    obj_Id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
+    department: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    obj_Name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
 
-    artist: {
+    Culture: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    description: {
+    // artist: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    artist_Name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
 
-    item_url: {
+    artist_Nation: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+
+    // description: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+
+    endBy : {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    medium : {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    city : {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    // item_url: {
+    linkResource: {
+      type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         isURL: true,
       },
