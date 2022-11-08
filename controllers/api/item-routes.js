@@ -73,7 +73,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'item_url',
+      'linkresource',
       'title',
       'created_at',
       //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']

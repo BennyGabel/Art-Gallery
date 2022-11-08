@@ -13,8 +13,8 @@ Item.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    
-    cobjid:{
+
+    cobjid: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -58,17 +58,17 @@ Item.init(
     //   allowNull: false,
     // },
 
-    endby : {
+    endby: {
       type: DataTypes.STRING,
       allowNull: true,
     },
 
-    medium : {
+    medium: {
       type: DataTypes.STRING,
       allowNull: true,
     },
 
-    city : {
+    city: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -81,6 +81,17 @@ Item.init(
         isURL: true,
       },
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+    ispublic: {
+      type: DataTypes.BOOLEAN,
+    }
+
   },
   {
     sequelize,

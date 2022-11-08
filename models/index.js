@@ -1,16 +1,16 @@
 const User = require("./User");
 const Item = require("./Item");
 const Comment = require("./Comment");
-
+const Art = require("./art");
 //associations listed here
 
 User.hasMany(Item, {
     foreignKey: "user_id",
   });
   
-//   Item.belongsTo(User, {
-//     foreignKey: "user_id",
-//   });
+  Item.belongsTo(User, {
+    foreignKey: "user_id",
+  });
   
   Comment.belongsTo(User, {
     foreignKey: 'user_id'
@@ -29,4 +29,5 @@ User.hasMany(Item, {
   });
 
 
-module.exports = { User, Item, Comment };
+
+module.exports = { User, Item, Comment, Art };
