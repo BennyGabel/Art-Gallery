@@ -39,25 +39,6 @@ router.get('/', (req, res) => {
             attributes: ['username']
           }
         ]      
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
-     //,
-    // // // order: [['created_at', 'DESC']],
-    // order: [['endby', 'DESC']]  // ,
-    // order: [['endby', 'DESC']]  // ,
-    // include: [
-    //   {
-    //     model: Comment,
-    //     attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
-    //     include: {
-    //       model: User,
-    //       attributes: ['username']
-    //     }
-    //   },
-    //   {
-    //     model: User,
-    //     attributes: ['username']
-    //   }
-    // ]
   })
     .then(dbItemData => res.json(dbItemData))
     .catch(err => {
@@ -73,9 +54,13 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'linkresource',
+      'cobjid',
       'title',
-      'created_at',
+      'department',
+      'culture',
+      'artistnation',
+      'endby',
+      'linkresource'
       //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
     ],
     include: [
