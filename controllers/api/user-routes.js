@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Item,
-        attributes: ["id", "title", "Item_url", "created_at"],
+        attributes: ["id", "title", "linkresource", "endby"],
       },
       {
         model: Comment,
