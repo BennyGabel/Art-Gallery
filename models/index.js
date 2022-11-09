@@ -1,7 +1,7 @@
 const User = require("./User");
 const Item = require("./Item");
 const Comment = require("./Comment");
-const Art = require("./art");
+
 //associations listed here
 
 User.hasMany(Item, {
@@ -30,4 +30,4 @@ User.hasMany(Item, {
 
 
 
-module.exports = { User, Item, Comment, Art };
+module.exports = { User, Item, Comment };

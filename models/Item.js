@@ -39,10 +39,6 @@ Item.init(
       allowNull: false,
     },
 
-    // artist: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     artistname: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -73,7 +69,6 @@ Item.init(
       allowNull: true,
     },
 
-    // item_url: {
     linkresource: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -90,12 +85,17 @@ Item.init(
     },
     ispublic: {
       type: DataTypes.BOOLEAN,
-    }
+    },
 
+    gallerynum: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
     freezeTableName: true,
+    timestamps: false,
     underscored: true,
     modelName: "item",
   }

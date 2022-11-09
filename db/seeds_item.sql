@@ -3277,7 +3277,7 @@ INSERT INTO item
 VALUES
   (1,503546,680,"Musical Instruments","Cornet à Pistons in B-flat","Cornet à Pistons in B-flat","French","Courtois frères","","","Brass, touch pieces of ivory","Paris","http://www.metmuseum.org/art/collection/search/503546");
 
-NSERT INTO art
+INSERT INTO item
   (ispublic,
   cobjid,
   gallerynum,
@@ -3768,5 +3768,4 @@ INSERT INTO item
 VALUES
   (1,11120,0,"The American Wing","Watercolor","Fishing Boats, Key West","American","Winslow Homer","American","1910","Watercolor and graphite on off-white wove paper","","http://www.metmuseum.org/art/collection/search/11120");
 
---- End of Seeds for art
 
