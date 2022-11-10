@@ -10,6 +10,20 @@ router.get('/sort/:sort', (req, res) => {
   // Will receive Sort Parameter
   evalSortParam = req.params.sort
 
+  fDirection = evalSortParam
+
+  sortfDir = 'ASC'
+  lastLetter = fDirection.slice(-1)
+
+  // console.log("Last ", lastLetter)
+  // console.log("2nd last", fDirection[fDirection.length - 2])
+
+  if ((fDirection[fDirection.length - 2]) == '*') {
+    lastLetter = fDirection.slice(-1)
+
+    evalSortParam = fDirection.substr(0,fDirection.length-2)
+  }
+// console.log(evalSortParam)
   fSortBy = `endby`
 //    switch (LOWER(evalSortParam))  {    "LOWER" DOESN'T WORK
   switch (evalSortParam)  {
@@ -24,11 +38,30 @@ router.get('/sort/:sort', (req, res) => {
     case 'artistnation':
       fSortBy = `artistnation`
       break 
-    case 'endby':
-      fSortBy = `endby`
-      break 
+    // case 'endby':
+    //   fSortBy = `endby`
+    //   break 
 
   }  
+  
+  // Will assigned SORT-direction based on if second Last character is "*" and last character "A" or "D" 
+  if ((fDirection[fDirection.length - 2]) == '*') {
+    lastLetter = fDirection.slice(-1)
+// console.log(1,evalSortParam)
+    evalSortParam = fDirection.substr(0,fDirection.length-2)
+// console.log(2,evalSortParam)
+
+    if (lastLetter=='D') {
+      sortfDir = 'DESC'
+    } else if (fSortBy=='endby' && lastLetter=='D') {
+      sortfDir = 'DESC'
+    } else {
+      sortfDir = 'ASC'
+    }
+  }
+///
+
+  
   // Evaluate SORT Selection - END
 
   Item.findAll({ 
@@ -43,7 +76,8 @@ router.get('/sort/:sort', (req, res) => {
     'linkresource'
   ] ,
     // order: [['endby', 'DESC']],
-    order: [[`${fSortBy}`, 'DESC']],   // Assign Sort-by by parameter
+    // order: [[`${fSortBy}`, 'DESC']],   // Assign Sort-by by parameter
+    order: [[`${fSortBy}`, `${sortfDir}`]],
     include: [
         {
           model: Comment,
@@ -108,7 +142,7 @@ router.get('/', (req, res) => {
 
 // router.get('/:id&:culture', (req, res) => {
 router.get('/:id', (req, res) => {
-  console.log('Id parameter')
+  // console.log('Id parameter')
   // console.log(req.params, req.params('id'))
   // console.log(req.params, req.params('culture'))
   Item.findOne({
@@ -156,7 +190,7 @@ router.get('/:id', (req, res) => {
 
 // Two Searches - BEG
 router.get('/culture/:culture/endby/:endby', (req, res) => {
-  console.log('Culture parameter')
+  // console.log('Culture parameter')
   Item.findAll({
      where: {
        culture: req.params.culture,
@@ -211,25 +245,33 @@ router.get('/culture/:culture/sort/:sort', (req, res) => {
   // Will receive Sort Parameter
   evalSortParam = req.params.sort
 
+//
+fDirection = evalSortParam
+// console.log(fDirection[fDirection.length - 2])
 
-  /* CVouldnt get it to work
-  fDirection = 'ASC'
+  // CVouldnt get it to work
+  sortfDir = 'ASC'
+  lastLetter = fDirection.slice(-1)
+
+  // console.log("Last ", lastLetter)
+  // console.log("2nd last", fDirection[fDirection.length - 2])
+
   // Will assigned SORT-direction based on if second Last character is "*" and last character "A" or "D" 
   if ((fDirection[fDirection.length - 2]) == '*') {
     lastLetter = fDirection.slice(-1)
-console.log(1,evalSortParam)
-    evalSortParam = cString.substr(0,cString.length-2)
-console.log(2,evalSortParam)
+// console.log(1,evalSortParam)
+    evalSortParam = fDirection.substr(0,fDirection.length-2)
+// console.log(2,evalSortParam)
 
     if (lastLetter=='D') {
-      fDirection = 'DESC'
+      sortfDir = 'DESC'
     } else if (fSortBy=='endby' && lastLetter=='D') {
-      fDirection = 'DESC'
+      sortfDir = 'DESC'
     } else {
-      fDirection = 'ASC'
+      sortfDir = 'ASC'
     }
   }
-  */
+  //
 
 
   fSortBy = `endby`
@@ -252,6 +294,8 @@ console.log(2,evalSortParam)
       break 
 
   }
+
+  // console.log(lastLetter, fDirection, evalSortParam, sortfDir)
   // Evaluate SORT Selection
 
 
@@ -271,8 +315,8 @@ console.log(2,evalSortParam)
        //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
      ],
      //  order: `${fSortBy}`,
-    order: [[`${fSortBy}`, 'DESC']],
-//     order: [[`${fSortBy}`, `${fDirection}`]],    Couldnt get it to work
+//    order: [[`${fSortBy}`, 'DESC']],
+     order: [[`${fSortBy}`, `${sortfDir}`]],    //Couldnt get it to work
      include: [
        {
          model: Comment,
@@ -305,7 +349,7 @@ console.log(2,evalSortParam)
 
 // Culture search is now working
 router.get('/culture/:culture', (req, res) => {
-   console.log('Culture parameter')
+  //  console.log('Culture parameter')
    Item.findAll({
       where: {
         culture: req.params.culture
