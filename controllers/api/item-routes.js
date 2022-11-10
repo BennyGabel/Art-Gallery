@@ -6,13 +6,7 @@ const { Art, Item, User, Comment } = require('../../models');
 router.get('/', (req, res) => {
     Item.findAll({
 
-    // attributes: [
-    //   'id',
-    //   'item_url',
-    //   'title',
-    //   'created_at',
-    //   // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
-    // ],
+    
     attributes: [
       'id',
       'cobjid',
@@ -94,51 +88,103 @@ router.get('/:id', (req, res) => {
      });
  });
 
-// by culture - not working
-// router.get('/:culture', (req, res) => {
-//   console.log('Culture parameter')
-//   Item.findOne({
-//      where: {
-//        culture: req.params.culture
-//      },
-//      attributes: [
-//        'id',
-//        'cobjid',
-//        'title',
-//        'department',
-//        'culture',
-//        'artistnation',
-//        'endby',
-//        'linkresource'
-//        //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
-//      ],
-//      include: [
-//        {
-//          model: Comment,
-//          attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
-//          include: {
-//            model: User,
-//            attributes: ['username']
-//          }
-//        },
-//        {
-//          model: User,
-//          attributes: ['username']
-//        }
-//      ]
-//    })
-//      .then(dbItemData => {
-//        if (!dbItemData) {
-//          res.status(404).json({ message: 'No item found with this id' });
-//          return;
-//        }
-//        res.json(dbItemData);
-//      })
-//      .catch(err => {
-//        console.log(err);
-//       res.status(500).json(err);
-//      });
-//  });
+// Two Searches - BEG
+router.get('/culture/:culture/endby/:endby', (req, res) => {
+  console.log('Culture parameter')
+  Item.findAll({
+     where: {
+       culture: req.params.culture,
+       endby: req.params.endby
+     },
+     attributes: [
+       'id',
+       'cobjid',
+       'title',
+       'department',
+       'culture',
+       'artistnation',
+       'endby',
+       'linkresource'
+       //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
+     ],
+     include: [
+       {
+         model: Comment,
+         attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
+         include: {
+           model: User,
+           attributes: ['username']
+         }
+       },
+       {
+         model: User,
+         attributes: ['username']
+       }
+     ]
+   })
+     .then(dbItemData => {
+       if (!dbItemData) {
+         res.status(404).json({ message: 'No item found with this id' });
+         return;
+       }
+       res.json(dbItemData);
+     })
+     .catch(err => {
+       console.log(err);
+      res.status(500).json(err);
+     });
+ });
+
+// Two Searches - END
+
+
+
+
+// Culture search is now working
+router.get('/culture/:culture', (req, res) => {
+   console.log('Culture parameter')
+   Item.findAll({
+      where: {
+        culture: req.params.culture
+      },
+      attributes: [
+        'id',
+        'cobjid',
+        'title',
+        'department',
+        'culture',
+        'artistnation',
+        'endby',
+        'linkresource'
+        //[sequelize.literal('(SELECT COUNT(*) FROM vote WHERE item.id = vote.post_id)'), 'vote_count']
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'item_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbItemData => {
+        if (!dbItemData) {
+          res.status(404).json({ message: 'No item found with this id' });
+          return;
+        }
+        res.json(dbItemData);
+      })
+      .catch(err => {
+        console.log(err);
+       res.status(500).json(err);
+      });
+  });
 
 // by culture - END - 22.11.09
 
