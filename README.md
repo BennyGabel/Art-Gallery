@@ -44,3 +44,7 @@ Made with ❤️ by Benny Gabel and Jen Hano
 
 ## Github
 Github Repository:  (https://github.com/BennyGabel/Art-Gallery)
+
+
+## Screenshots available  
+./public/assets/screenshots/
