@@ -21,19 +21,21 @@ N/A -- backend available only
   - Only GET requests
     - View all Items
       *(Sort option available   Ascending/Descending)*
-      1. Title
-      2. Department
-      3. Culture
-      4. Artist nation
-      5. Year art was completed
+      1. Title *(title)*
+      2. Department *(department)*
+      3. Culture *(culture)*
+      4. Artist nation *(artistnation)*
+      5. Year art was completed *(endby)*  
     - View Item (filtered) by Id - individual
     - View item (filtered) by Culture 
       *(Sort option available   Ascending/Descending)*
-      1. Title
-      2. Department
-      3. Artist nation
-      4. Year art was completed    
+      1. Title *(title)*
+      2. Department *(department)*
+      3. Artist nation *(artistnation)*
+      4. Year art was completed  *(endby)*  
     - View Item (filtered) by Culture and year of completion
+
+    *NOTE* When sorting, *A or *D can be added to select/indicate the direction (**Ascending**/**Descending**). *A or *D will only work if they are identified as the last two characters
 
 
 ## Contributors
