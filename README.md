@@ -6,9 +6,9 @@ A website that offers users the opportunity to comment and express appreciation 
 
 
 ## Table of Contents
-- [BuiltWith](#Built With)
+- [Built](#Built With)
 - [Website](#Website)
-- [Technical_Information](#Technical Information)
+- [TechInfo](#Technical Information)
 - [Contributors](#Contributors)
 - [Github](#github)
 
