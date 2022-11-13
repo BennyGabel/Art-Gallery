@@ -36,6 +36,8 @@ N/A -- backend available only
     - View Item (filtered) by Culture and year of completion
 
     *NOTE* When sorting, *A or *D can be added to select/indicate the direction (**Ascending**/**Descending**). *A or *D will only work if they are identified as the last two characters
+    ### i.e.  http://localhost:3001/api/items/culture/American/sort/title*D
+
 
 
 ## Contributors
