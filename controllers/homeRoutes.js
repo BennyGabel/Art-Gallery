@@ -3,8 +3,12 @@ const sequelize = require('../config/connection');
 const { Art, Item, User, Comment } = require('../models');
 
 
-/*
-router.get('/', (req, res) => {
+router.get('/', (req,res) => {
+    res.render('homepage')
+})
+
+
+router.get('/museum', (req, res) => {
     // res.render('homepage', data )
     // res.render('homepage')
         Item.findAll({
@@ -40,8 +44,9 @@ router.get('/', (req, res) => {
                 //Serializing the data for reading
                 let dataItems = dbItemData.map((item) => item.get({ plain: true }))
                 //rendering the homepage handler bars -- also sending the data for all items (dataItems) to the homepage handlerbars
-                res.render("homepage", {
-                    dataItems
+               console.log(dataItems)
+                res.render("museum", {
+                    dataItems  // Array
                 })
         })
         .catch(err => {
@@ -50,7 +55,7 @@ router.get('/', (req, res) => {
         });
     });
 
-  */  
+  
 
 // router.get('/museum', (req, res) => {
 

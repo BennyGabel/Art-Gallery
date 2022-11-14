@@ -1,1 +1,31 @@
-<div>This is the Museum page</div>
+<div>
+    This is the Museum page
+    {{#each dataItems}}
+
+
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+            <img src="../images/{{cobjid}}.jpeg" alt="" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+
+
+                <p class="card-text">
+                {{department}} <br>
+                {{culture}} <br>
+                {{artistnation}} <br>
+                {{endby}}
+                </p>
+
+                {{!-- <p>{{department}}</p>
+                <p>{{culture}}</p>
+                <p>{{artistnation}}</p>
+                <p>{{endby}}</p> --}}
+            </div>
+        </div> {{!-- Div End of Card --}}
+    </div>
+
+{{/each}}
+
+</div>
